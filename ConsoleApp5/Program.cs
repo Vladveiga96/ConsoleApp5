@@ -23,7 +23,7 @@ class InvestimentoFinanceiro
             Console.Write("Informe o valor inicial: R$ ");
             if (double.TryParse(Console.ReadLine(), out depositoInicial) && depositoInicial >= 0)
                 break;
-            Console.WriteLine("⚠ Valor inválido! Digite um número maior ou igual a 0.");
+            Console.WriteLine(" Valor inválido! Digite um número maior ou igual a 0.");
         }
 
         double depositoMensal;
@@ -32,7 +32,7 @@ class InvestimentoFinanceiro
             Console.Write("Informe o valor do depósito mensal: R$ ");
             if (double.TryParse(Console.ReadLine(), out depositoMensal) && depositoMensal >= 0)
                 break;
-            Console.WriteLine("⚠ Valor inválido! Digite um número maior ou igual a 0.");
+            Console.WriteLine(" Valor inválido! Digite um número maior ou igual a 0.");
         }
 
         int unidade;
@@ -41,7 +41,7 @@ class InvestimentoFinanceiro
             Console.WriteLine("Deseja informar o prazo em:\n1 - Anos\n2 - Meses");
             if (int.TryParse(Console.ReadLine(), out unidade) && (unidade == 1 || unidade == 2))
                 break;
-            Console.WriteLine("⚠ Opção inválida! Digite 1 para anos ou 2 para meses.");
+            Console.WriteLine(" Opção inválida! Digite 1 para anos ou 2 para meses.");
         }
 
         int prazo;
@@ -117,33 +117,6 @@ class InvestimentoFinanceiro
         }
 
         // =============================================
-        // Funcionalidade extra: Saque antecipado
-        // =============================================
-        Console.WriteLine("\nDeseja simular um saque antecipado? (s/n)");
-        string resposta = Console.ReadLine().ToLower();
-
-        if (resposta == "s")
-        {
-            int mesSaque;
-            while (true)
-            {
-                Console.Write("Informe o mês do saque (entre 1 e " + prazo + "): ");
-                if (int.TryParse(Console.ReadLine(), out mesSaque) && mesSaque > 0 && mesSaque <= prazo)
-                    break;
-                Console.WriteLine("⚠ Mês inválido! Digite um número dentro do prazo.");
-            }
-
-            double saldoSaque = depositoInicial;
-            for (int mes = 1; mes <= mesSaque; mes++)
-            {
-                double juros = saldoSaque * taxaMensal;
-                saldoSaque += juros + depositoMensal;
-            }
-
-            Console.WriteLine($"\nSe você sacar no mês {mesSaque}, terá acumulado: R$ {saldoSaque:F2}");
-        }
-
-        // =============================================
         // 5️⃣ Resultado final e ponto de virada
         // =============================================
         Console.WriteLine("\n====================================");
@@ -161,19 +134,32 @@ class InvestimentoFinanceiro
         }
 
         // =============================================
-        // 6️⃣ Funcionalidade extra: resumo financeiro
+        // 6️⃣ Funcionalidade extra (FINAL): Saque antecipado
         // =============================================
-        double totalAportado = depositoInicial + depositoMensal * prazo;
-        double totalJuros = saldo - totalAportado;
-        double percentualRendimento = (totalJuros / totalAportado) * 100;
+        Console.WriteLine("\nDeseja simular um saque antecipado? (s/n)");
+        string resposta = Console.ReadLine().ToLower();
 
-        Console.WriteLine("\nResumo Financeiro:");
-        Console.WriteLine($"Total investido (aportes): R$ {totalAportado:F2}");
-        Console.WriteLine($"Total em juros ganhos: R$ {totalJuros:F2}");
-        Console.WriteLine($"Rendimento sobre o capital investido: {percentualRendimento:F2}%");
+        if (resposta == "s")
+        {
+            int mesSaque;
+            while (true)
+            {
+                Console.Write("Informe o mês do saque (entre 1 e " + prazo + "): ");
+                if (int.TryParse(Console.ReadLine(), out mesSaque) && mesSaque > 0 && mesSaque <= prazo)
+                    break;
+                Console.WriteLine(" Mês inválido! Digite um número dentro do prazo.");
+            }
 
+            double saldoSaque = depositoInicial;
+            for (int mes = 1; mes <= mesSaque; mes++)
+            {
+                double juros = saldoSaque * taxaMensal;
+                saldoSaque += juros + depositoMensal;
+            }
+
+            Console.WriteLine($"\nSe você sacar no mês {mesSaque}, terá acumulado: R$ {saldoSaque:F2}");
+        }
         Console.WriteLine("====================================");
-
         Console.WriteLine("Pressione qualquer tecla para sair...");
         Console.ReadKey();
     }
