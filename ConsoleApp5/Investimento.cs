@@ -1,20 +1,22 @@
-﻿namespace ConsoleApp5 // ou seu namespace
+﻿namespace ConsoleApp5
 {
-    public static class Investimento
+    public class Investimento
     {
-        public static double CalcularMontante(double depositoInicial, double depositoMensal, double taxaMensal, int meses)
+        public static double CalcularMontante(double depositoInicial, double depositoMensal, double taxaMensal, int prazoMeses)
         {
             double saldo = depositoInicial;
 
-            for (int mes = 1; mes <= meses; mes++)
+            for (int mes = 1; mes <= prazoMeses; mes++)
             {
                 double juros = saldo * taxaMensal;
-                saldo += juros + depositoMensal;
+                saldo += juros;
+                saldo += depositoMensal;
             }
 
-            return Math.Round(saldo, 2); // Arredondar para testes
+            return Math.Round(saldo, 2);
         }
     }
 }
+
 
 

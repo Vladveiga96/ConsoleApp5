@@ -7,10 +7,10 @@ class InvestimentoFinanceiro
         // =============================================
         // TAXAS DE JUROS
         // =============================================
-        double taxaSelicAA = 0.15;     // 15% ao ano
-        double taxaIPCAAA = 0.0523;    // 5,23% ao ano
-        double taxaCDBAA = 0.1417;     // 14,17% ao ano
-        double taxaPoupMes = 0.006752; // 0,6752% ao mês (~0,5%+TR)
+        double taxaSelicAA = 0.1075;     // 10,75%
+        double taxaIPCAAA = 0.045;       // 4,5%
+        double taxaCDBAA = 0.12;         // 12% (aprox. 110% CDI)
+        double taxaPoupMes = 0.0056;     // 0,56% ao mês (estimado com Selic atual)
 
         Console.WriteLine("=== Simulador de Investimentos ===");
 
