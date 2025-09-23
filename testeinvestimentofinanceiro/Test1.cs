@@ -1,6 +1,6 @@
 ﻿using ConsoleApp5;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestesInvestimentoFinanceiro; // 👈 ajuste conforme seu projeto
+using TestesInvestimentoFinanceiro; 
 
 namespace TestesInvestimentoFinanceiro
 {

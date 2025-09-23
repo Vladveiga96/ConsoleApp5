@@ -4,9 +4,7 @@ class InvestimentoFinanceiro
 {
     static void Main()
     {
-        // =============================================
-        // TAXAS DE JUROS
-        // =============================================
+       
         double taxaSelicAA = 0.1075;     // 10,75%
         double taxaIPCAAA = 0.045;       // 4,5%
         double taxaCDBAA = 0.12;         // 12% (aprox. 110% CDI)
@@ -14,9 +12,7 @@ class InvestimentoFinanceiro
 
         Console.WriteLine("=== Simulador de Investimentos ===");
 
-        // =============================================
-        // 1️⃣ Solicitação de dados pelo usuário
-        // =============================================
+
         double depositoInicial;
         while (true)
         {
@@ -53,12 +49,10 @@ class InvestimentoFinanceiro
             Console.WriteLine("⚠ Prazo inválido! Digite um número inteiro positivo.");
         }
 
-        // Converte anos para meses se necessário
+        
         if (unidade == 1) prazo *= 12;
 
-        // =============================================
-        // 2️⃣ Escolha do tipo de investimento
-        // =============================================
+        
         int opcao;
         while (true)
         {
@@ -73,7 +67,7 @@ class InvestimentoFinanceiro
             Console.WriteLine("⚠ Opção inválida! Escolha entre 1 e 4.");
         }
 
-        // Calcula a taxa mensal a partir da taxa anual (exceto poupança)
+        
         double taxaMensal;
         switch (opcao)
         {
@@ -94,31 +88,26 @@ class InvestimentoFinanceiro
                 return;
         }
 
-        // =============================================
-        // 3️⃣ Cálculo mês a mês
-        // =============================================
+
         double saldo = depositoInicial;
-        int pontoVirada = -1; // mês em que juros superam o depósito
+        int pontoVirada = -1; 
 
         Console.WriteLine("\nMês\tDepósito\tJuros\t\tSaldo");
         Console.WriteLine("----------------------------------------------------");
 
         for (int mes = 1; mes <= prazo; mes++)
         {
-            double juros = saldo * taxaMensal; // juros do mês
-            saldo += juros + depositoMensal;   // saldo acumulado
+            double juros = saldo * taxaMensal; 
+            saldo += juros + depositoMensal;
 
-            // Exibe tabela mês a mês
             Console.WriteLine($"{mes}\t{depositoMensal:F2}\t\t{juros:F2}\t\t{saldo:F2}");
 
-            // 4️⃣ Verifica o ponto em que os juros superam os aportes
-            if (pontoVirada == -1 && juros >= depositoMensal)
+
+         if (pontoVirada == -1 && juros >= depositoMensal)
                 pontoVirada = mes;
         }
 
-        // =============================================
-        // 5️⃣ Resultado final e ponto de virada
-        // =============================================
+        
         Console.WriteLine("\n====================================");
         Console.WriteLine($"Valor final acumulado: R$ {saldo:F2}");
 
@@ -133,9 +122,7 @@ class InvestimentoFinanceiro
             Console.WriteLine("Os juros não superaram o depósito mensal no prazo informado.");
         }
 
-        // =============================================
-        // 6️⃣ Funcionalidade extra (FINAL): Saque antecipado
-        // =============================================
+        
         Console.WriteLine("\nDeseja simular um saque antecipado? (s/n)");
         string resposta = Console.ReadLine().ToLower();
 
