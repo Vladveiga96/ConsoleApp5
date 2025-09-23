@@ -5,10 +5,10 @@ class InvestimentoFinanceiro
     static void Main()
     {
        
-        double taxaSelicAA = 0.1075;     // 10,75%
-        double taxaIPCAAA = 0.045;       // 4,5%
-        double taxaCDBAA = 0.12;         // 12% (aprox. 110% CDI)
-        double taxaPoupMes = 0.0056;     // 0,56% ao mês (estimado com Selic atual)
+        double taxaSelicAA = 0.1075;    
+        double taxaIPCAAA = 0.045;       
+        double taxaCDBAA = 0.12;         
+        double taxaPoupMes = 0.0056;     
 
         Console.WriteLine("=== Simulador de Investimentos ===");
 
